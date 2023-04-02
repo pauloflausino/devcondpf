@@ -114,7 +114,7 @@ class ReservationController extends Controller
 
     public function getTimes($id, Request $request)
     {
-        $array = ['error' => '', 'list' => ''];
+        $array = ['error' => '', 'list' => []];
 
         $validator = Validator::make($request->all(), [
             'date' => 'required|date_format:Y-m-d',
@@ -175,7 +175,7 @@ class ReservationController extends Controller
                 }
 
                 foreach ($timeList as $timeItem) {
-                    if(!in_array($timeItem['id'], $toRemove)){
+                    if(!in_array($timeItem['id'], $toRemove)) {
                         $array['list'][] = $timeItem;
                     }
                 }
